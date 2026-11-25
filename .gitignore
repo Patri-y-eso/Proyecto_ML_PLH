@@ -3,6 +3,12 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# Carpetas que no quiero que se suban al repositorio
+pdf
+docs
+data/raw
+models
+
 # C extensions
 *.so
 
