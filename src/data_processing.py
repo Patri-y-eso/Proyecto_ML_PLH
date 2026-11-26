@@ -4,7 +4,8 @@ data_processing.py
 Procesa los datos de data/raw y guarda el resultado en data/processed.
 
 Entrada:
-    data/raw/<histórico Kaggle>.csv
+    data/raw/steam_games_lite.csv.gz  (versión ligera, ver notebooks/01_Fuentes.ipynb)
+      o data/raw/steam_games.csv      (CSV completo de Kaggle, ~1 GB)
     data/raw/upcoming_enriched.json   (generado en notebooks/01_Fuentes.ipynb)
 Salida:
     data/processed/games_processed.csv
@@ -12,7 +13,8 @@ Salida:
     data/processed/feature_list.json
 
 Uso (desde la raíz del proyecto):
-    python src/data_processing.py --hist games.csv
+    python src/data_processing.py                       # usa data/raw/steam_games_lite.csv.gz
+    python src/data_processing.py --hist steam_games.csv  # o el CSV completo de Kaggle
 """
 import argparse
 import ast
@@ -141,8 +143,9 @@ def build_base(df: pd.DataFrame, fuente: str) -> pd.DataFrame:
     if h:
         out["release_date"] = df["release_date"]
         out["is_free"] = (df["price_status"] == "free").astype(int)
-        out["n_screenshots"] = df["screenshots"].map(count_items)
-        out["n_movies"] = df["movies"].map(count_items)
+        # La versión ligera del histórico ya trae estos recuentos calculados
+        out["n_screenshots"] = df["n_screenshots"] if "n_screenshots" in df else df["screenshots"].map(count_items)
+        out["n_movies"] = df["n_movies"] if "n_movies" in df else df["movies"].map(count_items)
     else:
         fecha = fecha_exacta(df["release_date_store"])
         if "release_date_api" in df:
@@ -160,16 +163,17 @@ def build_base(df: pd.DataFrame, fuente: str) -> pd.DataFrame:
 
     out["achievements"] = pd.to_numeric(df["achievements"], errors="coerce").fillna(0)
     if not h:
-    # Steam no publica los logros hasta cerca del lanzamiento: 0 = desconocido
+        # Steam no publica los logros hasta cerca del lanzamiento: 0 = desconocido
         out["achievements"] = out["achievements"].replace(0, np.nan)
-
     langs = df["supported_languages"].map(parse_languages)
     out["n_languages"] = langs.map(len)
     out["has_spanish"] = langs.map(lambda l: int(any("Spanish" in x for x in l)))
     out["has_chinese"] = langs.map(lambda l: int(any("Chinese" in x for x in l)))
 
-    out["len_short_desc"] = df["short_description"].map(text_len)
-    out["len_detailed_desc"] = df["detailed_description"].map(text_len)
+    out["len_short_desc"] = (df["len_short_desc"] if "len_short_desc" in df
+                             else df["short_description"].map(text_len))
+    out["len_detailed_desc"] = (df["len_detailed_desc"] if "len_detailed_desc" in df
+                                else df["detailed_description"].map(text_len))
     out["release_month"] = out["release_date"].dt.month
     out["release_weekday"] = out["release_date"].dt.weekday
 
@@ -262,7 +266,8 @@ def main(hist_name: str, up_name: str):
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser(description="Procesa data/raw -> data/processed")
-    ap.add_argument("--hist", default="games.csv", help="csv histórico de Kaggle dentro de data/raw")
+    ap.add_argument("--hist", default="steam_games_lite.csv.gz",
+                    help="histórico dentro de data/raw: la versión ligera (.csv.gz) o el CSV completo de Kaggle")
     ap.add_argument("--upcoming", default="upcoming_enriched.json", help="json de próximos dentro de data/raw")
     args = ap.parse_args()
     main(args.hist, args.upcoming)

@@ -1,0 +1,96 @@
+{
+  "modelo": "xgboost",
+  "umbral": 0.7741832137107849,
+  "tasa_base": 0.0716,
+  "metricas": {
+    "PR_AUC": 0.4703,
+    "ROC_AUC": 0.9074,
+    "precision": 0.4364,
+    "recall": 0.5693,
+    "F1": 0.494,
+    "prec@top1%": 0.7134,
+    "prec@top5%": 0.549
+  },
+  "deciles": [
+    {
+      "decil": 1,
+      "proba_min": 0.7574999928474426,
+      "pct_exito": 0.4211,
+      "n_exitos": 662,
+      "lift": 5.8788,
+      "pct_exitos_acumulado": 0.5879
+    },
+    {
+      "decil": 2,
+      "proba_min": 0.5041999816894531,
+      "pct_exito": 0.1597,
+      "n_exitos": 251,
+      "lift": 2.229,
+      "pct_exitos_acumulado": 0.8108
+    },
+    {
+      "decil": 3,
+      "proba_min": 0.3181000053882599,
+      "pct_exito": 0.07,
+      "n_exitos": 110,
+      "lift": 0.9768,
+      "pct_exitos_acumulado": 0.9085
+    },
+    {
+      "decil": 4,
+      "proba_min": 0.21150000393390656,
+      "pct_exito": 0.0305,
+      "n_exitos": 48,
+      "lift": 0.4263,
+      "pct_exitos_acumulado": 0.9512
+    },
+    {
+      "decil": 5,
+      "proba_min": 0.1446000039577484,
+      "pct_exito": 0.0146,
+      "n_exitos": 23,
+      "lift": 0.2042,
+      "pct_exitos_acumulado": 0.9716
+    },
+    {
+      "decil": 6,
+      "proba_min": 0.10220000147819519,
+      "pct_exito": 0.0076,
+      "n_exitos": 12,
+      "lift": 0.1066,
+      "pct_exitos_acumulado": 0.9822
+    },
+    {
+      "decil": 7,
+      "proba_min": 0.07119999825954437,
+      "pct_exito": 0.007,
+      "n_exitos": 11,
+      "lift": 0.0977,
+      "pct_exitos_acumulado": 0.992
+    },
+    {
+      "decil": 8,
+      "proba_min": 0.04729999974370003,
+      "pct_exito": 0.0045,
+      "n_exitos": 7,
+      "lift": 0.0622,
+      "pct_exitos_acumulado": 0.9982
+    },
+    {
+      "decil": 9,
+      "proba_min": 0.027300000190734863,
+      "pct_exito": 0.0013,
+      "n_exitos": 2,
+      "lift": 0.0178,
+      "pct_exitos_acumulado": 1.0
+    },
+    {
+      "decil": 10,
+      "proba_min": 0.0012000000569969416,
+      "pct_exito": 0.0,
+      "n_exitos": 0,
+      "lift": 0.0,
+      "pct_exitos_acumulado": 1.0
+    }
+  ]
+}

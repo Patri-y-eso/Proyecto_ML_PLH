@@ -114,7 +114,7 @@ def main(seleccion):
         gs.fit(X_train, y_train)
 
         path = MODELS / f"trained_model_{i}.pkl"
-        joblib.dump(gs.best_estimator_, path)
+        joblib.dump(gs.best_estimator_, path, compress=3)
         indice[path.name] = {"modelo": name, "cv_PR_AUC": round(gs.best_score_, 4), "best_params": gs.best_params_}
         resultados[name] = (gs.best_score_, gs.best_estimator_, gs.best_params_)
         print(f"  {name:14s} CV PR-AUC={gs.best_score_:.3f} ({time.time()-t0:.0f}s) {gs.best_params_}")

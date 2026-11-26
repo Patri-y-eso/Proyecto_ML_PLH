@@ -3,11 +3,9 @@ __pycache__/
 *.py[cod]
 *$py.class
 
-# Carpetas que no quiero que se suban al repositorio
+# Carpetas o archivos que no quiero que se suban al repositorio
 pdf
-docs
-data/raw
-models
+data/raw/steam_games.csv
 
 # C extensions
 *.so

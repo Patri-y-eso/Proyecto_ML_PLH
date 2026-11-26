@@ -49,7 +49,7 @@ Detectar pronto qué juegos tienen potencial es útil para:
   - experiencia del desarrollador y del publisher
   - one-hot de los 20 géneros, 25 categorías y 40 tags más frecuentes
 
-> ⚠️ El CSV completo de Kaggle no se incluye en el repositorio por su tamaño. Descárgalo desde el enlace de arriba y guárdalo como `data/raw/steam_games.csv`.
+> 📦 **Versión ligera del histórico.** El CSV completo de Kaggle pesa ~1 GB y no se sube al repositorio. En su lugar se incluye `data/raw/steam_games_lite.csv.gz`, generado en `01_Fuentes.ipynb`. Conserva las 150.863 filas y solo las columnas que usa el proyecto, y sustituye las columnas pesadas (descripciones en HTML y listas de capturas y vídeos) por sus recuentos ya calculados. Con él se obtienen **exactamente los mismos datos procesados** que con el CSV completo. Para regenerarlo, descarga el CSV de Kaggle en `data/raw/steam_games.csv` y ejecuta la sección 6 del notebook `01`.
 
 ---
 
@@ -112,7 +112,7 @@ Sin las variables de historial del estudio (posible fuga leve), la PR-AUC solo b
 ```
 Proyecto_ML_PLH/
 ├── data/
-│   ├── raw/          # Kaggle + API de próximos + fichas de la tienda de Steam
+│   ├── raw/          # steam_games_lite.csv.gz + API de próximos + fichas de la tienda de Steam
 │   ├── processed/    # games_processed.csv, upcoming_processed.csv, feature_list.json,
 │   │                 # upcoming_predictions.csv
 │   ├── train/        # train.csv
@@ -169,7 +169,8 @@ Desde la **raíz del proyecto**:
 
 ```bash
 # 1. Procesar los datos: data/raw -> data/processed
-python src/data_processing.py --hist steam_games.csv
+#    (por defecto usa data/raw/steam_games_lite.csv.gz)
+python src/data_processing.py
 
 # 2. Entrenar los 6 modelos y guardar el final (~5 min)
 python src/training.py
@@ -224,5 +225,5 @@ La app tiene tres pestañas:
 
 ## Autor
 
-Patricia Lozano Hervás · Bootcamp de Data Science · 2026
-[GitHub](https://github.com/Patri-y-eso) · [LinkedIn](https://linkedin.com/in/patricia-lozano-hervas)
+**[Tu nombre]** · Bootcamp de Data Science · 2026
+[GitHub](https://github.com/tu-usuario) · [LinkedIn](https://linkedin.com/in/tu-usuario)

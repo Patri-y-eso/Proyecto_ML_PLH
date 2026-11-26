@@ -1,0 +1,50 @@
+{
+  "trained_model_1.pkl": {
+    "modelo": "logreg",
+    "cv_PR_AUC": 0.4369,
+    "best_params": {
+      "clf__C": 0.1
+    }
+  },
+  "trained_model_2.pkl": {
+    "modelo": "knn",
+    "cv_PR_AUC": 0.3703,
+    "best_params": {
+      "clf__n_neighbors": 150,
+      "clf__weights": "distance"
+    }
+  },
+  "trained_model_3.pkl": {
+    "modelo": "decision_tree",
+    "cv_PR_AUC": 0.3478,
+    "best_params": {
+      "clf__max_depth": 8,
+      "clf__min_samples_leaf": 100
+    }
+  },
+  "trained_model_4.pkl": {
+    "modelo": "random_forest",
+    "cv_PR_AUC": 0.4491,
+    "best_params": {
+      "clf__max_depth": null,
+      "clf__min_samples_leaf": 5
+    }
+  },
+  "trained_model_5.pkl": {
+    "modelo": "xgboost",
+    "cv_PR_AUC": 0.4793,
+    "best_params": {
+      "clf__learning_rate": 0.05,
+      "clf__max_depth": 4,
+      "clf__subsample": 0.8
+    }
+  },
+  "trained_model_6.pkl": {
+    "modelo": "lightgbm",
+    "cv_PR_AUC": 0.4709,
+    "best_params": {
+      "clf__learning_rate": 0.05,
+      "clf__num_leaves": 31
+    }
+  }
+}
