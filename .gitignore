@@ -6,7 +6,6 @@ __pycache__/
 # Carpetas o archivos que no quiero que se suban al repositorio
 pdf
 data/raw/steam_games.csv
-docs/Steam Hit Predictor_Presentación.pptx
 
 # C extensions
 *.so
