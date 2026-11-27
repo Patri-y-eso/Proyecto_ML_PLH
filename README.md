@@ -224,5 +224,5 @@ La app tiene tres pestañas:
 
 ## Autor
 
-**[Tu nombre]** · Bootcamp de Data Science · 2026
-[GitHub](https://github.com/tu-usuario) · [LinkedIn](https://linkedin.com/in/tu-usuario)
+**Patricia Lozano** · Bootcamp de Data Science · 2026
+[GitHub](https://github.com/Patri-y-eso) · [LinkedIn](https://linkedin.com/in/patricia-lozano-hervas)
