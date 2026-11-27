@@ -4,7 +4,6 @@
 
 Proyecto final de Machine Learning (Bootcamp de Data Science). El modelo predice el potencial de éxito de un juego usando **solo información disponible antes de su lanzamiento**: precio, géneros, idiomas, ficha de la tienda, trayectoria del estudio, etc. Después se aplica a **36 juegos que se lanzan entre noviembre y diciembre de 2026**.
 
-![App de Streamlit](docs/img/app.png)
 
 ---
 
@@ -136,7 +135,7 @@ Proyecto_ML_PLH/
 │   ├── app.py
 │   └── requirements.txt
 ├── docs/
-│   ├── presentacion.pptx
+│   ├── presentacion.pdf
 │   └── memoria.md
 └── README.md
 ```
